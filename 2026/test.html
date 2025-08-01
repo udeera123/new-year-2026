@@ -1,0 +1,629 @@
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://i.postimg.cc/kGjMN4yM/c5648a1e3b519052a4e026c6065cb40d-1-2.jpg" type="image/png">
+  <title>2025 අවුරුදු සටහන් පොත</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #FFD700;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(circle, #FFD700, #FFA500);
+      padding: 20px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #C00;
+      font-size: clamp(24px, 6vw, 36px);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      border: 2px solid #C00;
+      position: relative;
+    }
+    
+    .home {             
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: clamp(14px, 4vw, 18px);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background-color: #C00;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-weight: bold;
+      margin-bottom: 10px;
+      width: 150px;
+      max-width: 100%;
+    }
+    
+    .home:hover {
+      background-color: #A00;
+      transform: scale(1.05);
+    }
+    
+    .notebook-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      border: 3px solid #C00;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .note-input {
+      display: flex;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    #newNote {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #C00;
+      border-radius: 8px 0 0 8px;
+      outline: none;
+      transition: all 0.3s;
+    }
+    
+    #newNote:focus {
+      border-color: #A00;
+      box-shadow: 0 0 5px rgba(192, 0, 0, 0.5);
+    }
+    
+    .add-btn {
+      background-color: #C00;
+      color: white;
+      border: none;
+      padding: 0 20px;
+      font-size: 18px;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .add-btn:hover {
+      background-color: #A00;
+    }
+    
+    .notes-container {
+      flex: 1;
+      overflow-y: auto;
+    }
+    
+    .note {
+      background-color: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-left: 5px solid #C00;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .note:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .note-text {
+      word-break: break-word;
+      padding: 5px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .note-edit-input {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      display: none;
+    }
+    
+    .note-buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    
+    .edit-btn, .delete-btn, .save-btn, .cancel-btn, .priority-btn {
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    
+    .edit-btn {
+      background-color: #4CAF50;
+    }
+    
+    .delete-btn {
+      background-color: #ff3333;
+    }
+    
+    .save-btn {
+      background-color: #2196F3;
+      display: none;
+    }
+    
+    .cancel-btn {
+      background-color: #ff9800;
+      display: none;
+    }
+    
+    .priority-btn {
+      background-color: #9C27B0;
+    }
+    
+    .edit-btn:hover, .delete-btn:hover, 
+    .save-btn:hover, .cancel-btn:hover,
+    .priority-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    
+    .footer {
+      width: 100%;
+      text-align: center;
+      color: #333;
+      font-size: clamp(12px, 3vw, 16px);
+      padding: 15px 0;
+      margin-top: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+    }
+    
+    .emoji-decoration {
+      font-size: 24px;
+      text-align: center;
+      margin: 10px 0;
+    }
+    
+    .note-date {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    
+    .priority-high {
+      border-left: 5px solid #ff3333;
+    }
+    
+    .priority-medium {
+      border-left: 5px solid #ff9800;
+    }
+    
+    .priority-low {
+      border-left: 5px solid #4CAF50;
+    }
+    
+    .search-container {
+      margin-bottom: 15px;
+    }
+    
+    #searchNotes {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #C00;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+    }
+    
+    .empty-state img {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+    
+    .note-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .note-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    
+    .tag {
+      background-color: #e0e0e0;
+      padding: 3px 8px;
+      border-radius: 15px;
+      font-size: 12px;
+    }
+    
+    .tag-input {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .tag-add-btn {
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      display: none;
+      margin-top: 5px;
+    }
+    
+    @media (max-width: 600px) {
+      .notebook-container {
+        padding: 15px;
+      }
+      
+      #newNote {
+        padding: 10px;
+        font-size: 14px;
+      }
+      
+      .add-btn {
+        padding: 0 15px;
+      }
+      
+      .note-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .edit-btn, .delete-btn, .save-btn, .cancel-btn, .priority-btn {
+        flex: 1;
+        padding: 8px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html"> <button class="home">Home</button> </a>
+  <div class="header">
+    2025 අවුරුදු සටහන් පොත
+    <br>
+    <small>By Udeera Lochana</small>
+  </div>
+  <div class="notebook-container">
+    <div class="search-container">
+      <input type="text" id="searchNotes" placeholder="සටහන් සොයන්න...">
+    </div>
+    <div class="note-input">
+      <input type="text" id="newNote" placeholder="ඔබේ සටහන ඇතුළත් කරන්න...">
+      <button class="add-btn" id="addNote">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="emoji-decoration">
+      🎉 ✍️ 🎊
+    </div>
+    <div class="notes-container" id="notesContainer">
+      <!-- Notes will appear here -->
+      <div class="empty-state" id="emptyState">
+        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png" alt="No notes">
+        <h3>සටහන් නොමැත</h3>
+        <p>ඔබේ පළමු සටහන එකතු කිරීමට ඉහත කොටුව භාවිතා කරන්න</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    made by © udeera lochana
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const notesContainer = document.getElementById('notesContainer');
+      const newNoteInput = document.getElementById('newNote');
+      const addNoteBtn = document.getElementById('addNote');
+      const searchInput = document.getElementById('searchNotes');
+      const emptyState = document.getElementById('emptyState');
+      
+      // Load notes from localStorage
+      loadNotes();
+      
+      // Add note event
+      addNoteBtn.addEventListener('click', addNote);
+      newNoteInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          addNote();
+        }
+      });
+      
+      // Search functionality
+      searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const notes = document.querySelectorAll('.note');
+        
+        notes.forEach(note => {
+          const text = note.querySelector('.note-text').textContent.toLowerCase();
+          if (text.includes(searchTerm)) {
+            note.style.display = 'block';
+          } else {
+            note.style.display = 'none';
+          }
+        });
+      });
+      
+      function addNote() {
+        const noteText = newNoteInput.value.trim();
+        if (noteText) {
+          createNoteElement(noteText);
+          newNoteInput.value = '';
+          saveNotes();
+          emptyState.style.display = 'none';
+        }
+      }
+      
+      function createNoteElement(text, priority = 'medium', tags = [], createdAt = new Date().toISOString()) {
+        const noteElement = document.createElement('div');
+        noteElement.className = `note priority-${priority}`;
+        
+        const noteDate = document.createElement('div');
+        noteDate.className = 'note-date';
+        noteDate.textContent = formatDate(new Date(createdAt));
+        
+        const textElement = document.createElement('div');
+        textElement.className = 'note-text';
+        textElement.textContent = text;
+        
+        const editInput = document.createElement('input');
+        editInput.type = 'text';
+        editInput.className = 'note-edit-input';
+        editInput.value = text;
+        
+        const noteActions = document.createElement('div');
+        noteActions.className = 'note-actions';
+        
+        const noteTags = document.createElement('div');
+        noteTags.className = 'note-tags';
+        
+        tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'tag';
+          tagElement.textContent = tag;
+          noteTags.appendChild(tagElement);
+        });
+        
+        const tagInput = document.createElement('input');
+        tagInput.type = 'text';
+        tagInput.className = 'tag-input';
+        tagInput.placeholder = 'ටැග් එකතු කරන්න';
+        
+        const tagAddBtn = document.createElement('button');
+        tagAddBtn.className = 'tag-add-btn';
+        tagAddBtn.textContent = 'එකතු කරන්න';
+        
+        tagAddBtn.addEventListener('click', function() {
+          const tagText = tagInput.value.trim();
+          if (tagText) {
+            const tagElement = document.createElement('span');
+            tagElement.className = 'tag';
+            tagElement.textContent = tagText;
+            noteTags.appendChild(tagElement);
+            tagInput.value = '';
+            saveNotes();
+          }
+        });
+        
+        tagInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            tagAddBtn.click();
+          }
+        });
+        
+        const buttonsDiv = document.createElement('div');
+        buttonsDiv.className = 'note-buttons';
+        
+        const priorityBtn = document.createElement('button');
+        priorityBtn.className = 'priority-btn';
+        priorityBtn.textContent = 'ප්‍රමුඛතාව';
+        priorityBtn.addEventListener('click', function() {
+          const currentPriority = noteElement.classList.contains('priority-high') ? 'high' : 
+                                noteElement.classList.contains('priority-medium') ? 'medium' : 'low';
+          let newPriority;
+          
+          if (currentPriority === 'high') {
+            newPriority = 'medium';
+          } else if (currentPriority === 'medium') {
+            newPriority = 'low';
+          } else {
+            newPriority = 'high';
+          }
+          
+          noteElement.className = `note priority-${newPriority}`;
+          saveNotes();
+        });
+        
+        const editBtn = document.createElement('button');
+        editBtn.className = 'edit-btn';
+        editBtn.textContent = 'සංස්කරණය';
+        editBtn.addEventListener('click', function() {
+          textElement.style.display = 'none';
+          editInput.style.display = 'block';
+          editBtn.style.display = 'none';
+          deleteBtn.style.display = 'none';
+          priorityBtn.style.display = 'none';
+          saveBtn.style.display = 'inline-block';
+          cancelBtn.style.display = 'inline-block';
+          tagInput.style.display = 'none';
+          tagAddBtn.style.display = 'none';
+          editInput.focus();
+        });
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.textContent = 'මකන්න';
+        deleteBtn.addEventListener('click', function() {
+          if (confirm('ඔබට මෙම සටහන මැකීමට අවශ්‍යද?')) {
+            notesContainer.removeChild(noteElement);
+            saveNotes();
+            checkEmptyState();
+          }
+        });
+        
+        const saveBtn = document.createElement('button');
+        saveBtn.className = 'save-btn';
+        saveBtn.textContent = 'සුරකින්න';
+        saveBtn.addEventListener('click', function() {
+          const newText = editInput.value.trim();
+          if (newText) {
+            textElement.textContent = newText;
+            textElement.style.display = 'block';
+            editInput.style.display = 'none';
+            editBtn.style.display = 'inline-block';
+            deleteBtn.style.display = 'inline-block';
+            priorityBtn.style.display = 'inline-block';
+            saveBtn.style.display = 'none';
+            cancelBtn.style.display = 'none';
+            tagInput.style.display = 'none';
+            tagAddBtn.style.display = 'none';
+            saveNotes();
+          }
+        });
+        
+        const cancelBtn = document.createElement('button');
+        cancelBtn.className = 'cancel-btn';
+        cancelBtn.textContent = 'අවලංගු';
+        cancelBtn.addEventListener('click', function() {
+          textElement.style.display = 'block';
+          editInput.style.display = 'none';
+          editBtn.style.display = 'inline-block';
+          deleteBtn.style.display = 'inline-block';
+          priorityBtn.style.display = 'inline-block';
+          saveBtn.style.display = 'none';
+          cancelBtn.style.display = 'none';
+          tagInput.style.display = 'none';
+          tagAddBtn.style.display = 'none';
+          editInput.value = textElement.textContent;
+        });
+        
+        const addTagBtn = document.createElement('button');
+        addTagBtn.className = 'edit-btn';
+        addTagBtn.textContent = 'ටැග් එකතු කරන්න';
+        addTagBtn.addEventListener('click', function() {
+          tagInput.style.display = 'block';
+          tagAddBtn.style.display = 'inline-block';
+          tagInput.focus();
+        });
+        
+        buttonsDiv.appendChild(priorityBtn);
+        buttonsDiv.appendChild(editBtn);
+        buttonsDiv.appendChild(addTagBtn);
+        buttonsDiv.appendChild(deleteBtn);
+        buttonsDiv.appendChild(saveBtn);
+        buttonsDiv.appendChild(cancelBtn);
+        
+        noteActions.appendChild(noteDate);
+        noteActions.appendChild(buttonsDiv);
+        
+        noteElement.appendChild(noteActions);
+        noteElement.appendChild(textElement);
+        noteElement.appendChild(editInput);
+        noteElement.appendChild(noteTags);
+        noteElement.appendChild(tagInput);
+        noteElement.appendChild(tagAddBtn);
+        
+        notesContainer.insertBefore(noteElement, emptyState);
+      }
+      
+      function saveNotes() {
+        const notes = [];
+        document.querySelectorAll('.note').forEach(note => {
+          const text = note.querySelector('.note-text').textContent;
+          const priority = note.classList.contains('priority-high') ? 'high' : 
+                         note.classList.contains('priority-medium') ? 'medium' : 'low';
+          
+          const tags = [];
+          note.querySelectorAll('.tag').forEach(tag => {
+            tags.push(tag.textContent);
+          });
+          
+          const dateElement = note.querySelector('.note-date');
+          const createdAt = dateElement ? dateElement.getAttribute('data-timestamp') : new Date().toISOString();
+          
+          notes.push({
+            text,
+            priority,
+            tags,
+            createdAt
+          });
+        });
+        
+        localStorage.setItem('newYearNotes', JSON.stringify(notes));
+      }
+      
+      function loadNotes() {
+        const savedNotes = localStorage.getItem('newYearNotes');
+        if (savedNotes) {
+          const notes = JSON.parse(savedNotes);
+          if (notes.length > 0) {
+            emptyState.style.display = 'none';
+            notes.forEach(note => {
+              createNoteElement(note.text, note.priority, note.tags, note.createdAt);
+            });
+          }
+        }
+      }
+      
+      function formatDate(date) {
+        const options = { 
+          year: 'numeric', 
+          month: 'short', 
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        };
+        return date.toLocaleDateString('si-LK', options);
+      }
+      
+      function checkEmptyState() {
+        if (document.querySelectorAll('.note').length === 0) {
+          emptyState.style.display = 'block';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="https://i.postimg.cc/kGjMN4yM/c5648a1e3b519052a4e026c6065cb40d-1-2.jpg" type="image/png"> 
+  <title>2025 Digital අවුරුදු නැකත් සීට්ටුව</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .header {
+      text-align: center;
+      margin: 20px 0;
+      color: #C00;
+      font-size: clamp(28px, 6vw, 42px);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: 2px solid #C00;
+    }
+    
+    .countdown-container {
+      text-align: center;
+      margin: 10px 0 20px 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: 2px solid #C00;
+    }
+    
+    .countdown-title {
+      font-size: clamp(18px, 4vw, 24px);
+      color: #C00;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 70px;
+    }
+    
+    .countdown-number {
+      font-size: clamp(24px, 6vw, 36px);
+      font-weight: bold;
+      color: #C00;
+    }
+    
+    .countdown-label {
+      font-size: clamp(12px, 3vw, 14px);
+      color: #333;
+    }
+    
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      gap: 15px;
+    }
+    
+    .auspicious-times-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      width: 100%;
+      padding: 20px;
+    }
+    
+    .time-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+      color: #333;
+      border: none;
+      padding: 20px;
+      font-size: clamp(16px, 3vw, 18px);
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.3);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .time-card.passed {
+      background: linear-gradient(145deg, rgba(255,230,230,0.8), rgba(255,200,200,0.5));
+      border: 2px solid rgba(200,0,0,0.3);
+    }
+    
+    .time-title {
+      font-weight: bold;
+      color: #C00;
+      margin-bottom: 10px;
+      font-size: clamp(18px, 4vw, 22px);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .time-date {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .time-date.passed {
+      color: #C00;
+    }
+    
+    .time-countdown {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
+    
+    .passed-message {
+      color: #C00;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: center;
+      margin: 10px 0;
+      display: none;
+    }
+    
+    .time-countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 50px;
+    }
+    
+    .time-countdown-number {
+      font-size: clamp(18px, 4vw, 24px);
+      font-weight: bold;
+      color: #006400;
+    }
+    
+    .time-countdown-label {
+      font-size: clamp(10px, 2.5vw, 12px);
+      color: #333;
+    }
+    
+    .time-details {
+      font-size: clamp(14px, 3vw, 16px);
+      margin-top: 10px;
+      text-align: left;
+    }
+    
+    .footer {
+      width: 100%;
+      text-align: center;
+      color: #333;
+      font-size: clamp(12px, 3vw, 16px);
+      padding: 15px 0;
+      margin-top: auto;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      max-width: 800px;
+    }
+            .home{
+            position:relative;
+            right:0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: clamp(14px, 4vw, 18px);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: #C00;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            margin: 5px 0;
+            width: 150px;
+            max-width: 100%;
+
+        }
+      
+        .home:hover {
+            background-color: #A00;
+            transform: scale(1.05);
+
+        }
+    .decoration {
+      position: absolute;
+      font-size: 24px;
+      color: #C00;
+      z-index: -1;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @media (max-width: 600px) {
+      .auspicious-times-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .time-card {
+        min-height: auto;
+        padding: 15px;
+      }
+      
+      .countdown-container {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html"> <button class="home">Home</button> </a> 
+  
+  <div class="header">
+   2025 Digital අවුරුදු නැකත් සීට්ටුව
+    <br>
+    <small>By Udeera Lochana</small>
+  </div>
+  
+  <div class="countdown-container"> 
+    <div class="countdown-title">
+      අලුත් අවුරුදු උදා වුනා
+    </div> 
+    <div class="countdown" id="countdown"> 
+      <div class="countdown-item"> 
+        <div class="countdown-number" id="days">
+          00
+        </div> 
+        <div class="countdown-label">
+          දින
+        </div> 
+      </div> 
+      <div class="countdown-item"> 
+        <div class="countdown-number" id="hours">
+          00
+        </div> 
+        <div class="countdown-label">
+          පැය
+        </div> 
+      </div> 
+      <div class="countdown-item"> 
+        <div class="countdown-number" id="minutes">
+          00
+        </div> 
+        <div class="countdown-label">
+          මිනිත්තු
+        </div> 
+      </div> 
+      <div class="countdown-item"> 
+        <div class="countdown-number" id="seconds">
+          00
+        </div> 
+        <div class="countdown-label">
+          තත්පර
+        </div> 
+      </div> 
+    </div> 
+  </div>
+  
+  <div class="main-content">
+    <div class="auspicious-times-container">
+      <!-- Punya Kaalaya -->
+      <div class="time-card" id="pk-card">
+        <div class="time-title">පුණ්‍ය කාලය</div>
+        <div class="time-date" id="pk-date">2025.04.13 20:57</div>
+        <div class="time-countdown" id="pk-countdown">
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="pk-days">00</div>
+            <div class="time-countdown-label">දින</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="pk-hours">00</div>
+            <div class="time-countdown-label">පැය</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="pk-minutes">00</div>
+            <div class="time-countdown-label">මිනිත්තු</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="pk-seconds">00</div>
+            <div class="time-countdown-label">තත්පර</div>
+          </div>
+        </div>
+        <div class="passed-message" id="pk-passed">නැකත පසු වී ඇත</div>
+        <div class="time-details">
+          අප්‍රේල් මස 13 වැනි ඉරිදා අපරභාග 08.57 සිට පසුදින එනම් 14 වැනි සඳුදා පූර්වභාග 09.45 දක්වා පුණ්‍ය කාලය බැවින් අප්‍රේල් මස 13 වැනි ඉරිදා අපරභාග 08.570 පළමුව ආහාර පාන ගෙන සියලු වැඩ අත්හැර ආගමික වතාවත්වල යෙදීම ද, පුණ්‍ය කාලයේ අපර කොටස එනම් අප්‍රේල් මස 14 වැනි සඳුදා පූර්වභාග 03.21 සිට 14 වැනි සඳුදා පූර්වභාග 09.45 දක්වා පහත දැක්වෙන අයුරින් ආහාර පිසීම, වැඩ ඇල්ලීම්, ගනු දෙනු කිරීම හා ආහර අනුභවය ආදී නැකත් වාත්‍ර විධි ඉටු කිරීම මැනවි.
+        </div>
+      </div>
+      
+      <!-- Aahara Pisima -->
+      <div class="time-card" id="ap-card">
+        <div class="time-title">අහාර පිසීම</div>
+        <div class="time-date" id="ap-date">2025.04.14 04:04</div>
+        <div class="time-countdown" id="ap-countdown">
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="ap-days">00</div>
+            <div class="time-countdown-label">දින</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="ap-hours">00</div>
+            <div class="time-countdown-label">පැය</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="ap-minutes">00</div>
+            <div class="time-countdown-label">මිනිත්තු</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="ap-seconds">00</div>
+            <div class="time-countdown-label">තත්පර</div>
+          </div>
+        </div>
+        <div class="passed-message" id="ap-passed">නැකත පසු වී ඇත</div>
+        <div class="time-details">
+          අප්‍රේල් මස 14 වැනි සඳුදා පූර්වභාග 04.04 තඹ වස්ත්‍රාහරණයෙන් සැරසී දකුණු දිශාව බලා ළිප් බැඳ ගිනි මොළවා කිරි බතක් ද කැවිලි වර්ගයක් ද දී කිරි සහ විලඳ ද පිළියෙල කර ගැනීම මැනවි.
+        </div>
+      </div>
+      
+      <!-- Wada Allima -->
+      <div class="time-card" id="wa-card">
+        <div class="time-title">වැඩ ඇල්ලීම, ගනුදෙනු කිරීම හා ආහාර අනුභවය</div>
+        <div class="time-date" id="wa-date">2025.04.14 06:44</div>
+        <div class="time-countdown" id="wa-countdown">
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="wa-days">00</div>
+            <div class="time-countdown-label">දින</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="wa-hours">00</div>
+            <div class="time-countdown-label">පැය</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="wa-minutes">00</div>
+            <div class="time-countdown-label">මිනිත්තු</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="wa-seconds">00</div>
+            <div class="time-countdown-label">තත්පර</div>
+          </div>
+        </div>
+        <div class="passed-message" id="wa-passed">නැකත පසු වී ඇත</div>
+        <div class="time-details">
+          අප්‍රේල් මස 14 වැනි සඳුදා පූර්වභාග 06.44 මුතු හා ශ්වේතවර්ණ වස්ත්‍රාභරණයෙන් සැරසී දකුණු දිශාව බලා සියලු වැඩ අල්ලා ගනුදෙනු කොට ආහාර අනුභව කිරීම මැනවේ.
+        </div>
+      </div>
+      
+      <!-- Hisa Thel Gama -->
+      <div class="time-card" id="htg-card">
+        <div class="time-title">හිසතෙල් ගෑම</div>
+        <div class="time-date" id="htg-date">2025.04.16 09:04</div>
+        <div class="time-countdown" id="htg-countdown">
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="htg-days">00</div>
+            <div class="time-countdown-label">දින</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="htg-hours">00</div>
+            <div class="time-countdown-label">පැය</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="htg-minutes">00</div>
+            <div class="time-countdown-label">මිනිත්තු</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="htg-seconds">00</div>
+            <div class="time-countdown-label">තත්පර</div>
+          </div>
+        </div>
+        <div class="passed-message" id="htg-passed">නැකත පසු වී ඇත</div>
+        <div class="time-details">
+          අප්‍රේල් මස 16 වැනි බදාදා පූර්වභාග 09.04 පච්ච වර්ණ හෙවත් කොළ පැහැති වස්ත්‍රාභරණයෙන් සැරසී උතුරු දිශාව බලා හිසට කොහොඹ පත් ද, පයට කොළොන් පත් ද තබා කොහොඹ පත් යුෂ මිශ්‍ර නානු හා තෙල් හා ස්නානය කිරීම මැනවි.
+        </div>
+      </div>
+      
+      <!-- Raakeerakshaa -->
+      <div class="time-card" id="rk-card">
+        <div class="time-title">රැකීරක්ෂා සඳහා පිටත්ව යෑම</div>
+        <div class="time-date" id="rk-date">2025.04.17 09:03</div>
+        <div class="time-countdown" id="rk-countdown">
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="rk-days">00</div>
+            <div class="time-countdown-label">දින</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="rk-hours">00</div>
+            <div class="time-countdown-label">පැය</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="rk-minutes">00</div>
+            <div class="time-countdown-label">මිනිත්තු</div>
+          </div>
+          <div class="time-countdown-item">
+            <div class="time-countdown-number" id="rk-seconds">00</div>
+            <div class="time-countdown-label">තත්පර</div>
+          </div>
+        </div>
+        <div class="passed-message" id="rk-passed">නැකත් පසු වී ඇත</div>
+        <div class="time-details">
+          අප්‍රේල් මස 17 වැනි බ්‍රහස්පතින්දා පූර්වභාග 09.03 රන්වන් පැහැති වස්ත්‍රාභරණයෙන් සැරසී කිරි බතක් හා එළකිරි මිශ්‍ර කැවිලි වර්ගයක් අනුභව කර උතුරු දිශාව බලා පිටත්ව යෑම මැනවි.
+        </div>
+      </div>
+    
+  <!--pala sitviima-->
+        <div class="time-card" id="ps-card">
+
+        <div class="time-title">පැළ සිටුවීම</div>
+
+        <div class="time-date" id="ps-date">2025.04.18 10:16</div>
+
+        <div class="time-countdown" id="ps-countdown">
+
+          <div class="time-countdown-item">
+
+            <div class="time-countdown-number" id="ps-days">00</div>
+
+            <div class="time-countdown-label">දින</div>
+
+          </div>
+
+          <div class="time-countdown-item">
+
+            <div class="time-countdown-number" id="ps-hours">00</div>
+
+            <div class="time-countdown-label">පැය</div>
+
+          </div>
+
+          <div class="time-countdown-item">
+
+            <div class="time-countdown-number" id="ps-minutes">00</div>
+
+            <div class="time-countdown-label">මිනිත්තු</div>
+
+          </div>
+
+          <div class="time-countdown-item">
+
+            <div class="time-countdown-number" id="ps-seconds">00</div>
+
+            <div class="time-countdown-label">තත්පර</div>
+
+          </div>
+
+        </div>
+
+        <div class="passed-message" id="ps-passed">නැකත පසු වී ඇත</div>
+
+        <div class="time-details">
+
+         අප්‍රේල් මස 18 වැනි සිකුරාදා දින පූර්වභාග 10.16 විචිත්‍ර වර්ණ වස්ත්‍රාභරණය සැරසී නැගෙනහිර දිශාව බලා පැළ සිටුවීම මැනවි 
+
+        </div>
+
+      </div>
+
+     </div>
+
+  
+  <div class="footer">
+    Made by © Udeera Lochana
+  </div>
+  
+  <!-- New Year decorations -->
+  <div class="decoration" style="top: 10%; left: 5%;">🎉</div>
+  <div class="decoration" style="top: 15%; right: 8%;">🪅</div>
+  <div class="decoration" style="bottom: 25%; left: 10%;">🎊</div>
+  <div class="decoration" style="bottom: 30%; right: 5%;">🥥</div>
+  <div class="decoration" style="top: 30%; left: 20%;">🎋</div>
+  <div class="decoration" style="top: 40%; right: 15%;">🏮</div>
+  
+  <script>
+    // Main New Year countdown
+    const newYearDate = new Date("April 14, 2025 03:21:00").getTime();
+    
+    const mainCountdown = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = newYearDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+      document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+      
+      if (distance < 0) {
+        clearInterval(mainCountdown);
+        document.getElementById("countdown").innerHTML = "<div style='color:#C00; font-weight:bold;'>ඔබ සැමට සාමය සතුට පිරි සුභ අලුත් අවුරුද්දක් වේවා!</div>";
+      }
+    }, 1000);
+    
+    // Auspicious times data
+    const auspiciousTimes = [
+      { id: 'pk', name: 'පුණ්‍ය කාලය', date: '2025-04-13T20:57:00' },
+      { id: 'ap', name: 'අහාර පිසීම', date: '2025-04-14T04:04:00' },
+      { id: 'wa', name: 'වැඩ ඇල්ලීම, ගනුදෙනු කිරීම හා ආහාර අනුභවය', date: '2025-04-14T06:44:00' },
+      { id: 'htg', name: 'හිසතෙල් ගෑම', date: '2025-04-16T09:04:00' },
+      { id: 'rk', name: 'රැකීරක්ෂා සඳහා පිටත්ව යෑම', date: '2025-04-17T09:03:00' },
+      { id: 'ps', name: 'පැළ සිටුවීම', date: '2025-04-18T10:16:00' }
+    ];
+    
+    // Format date as YYYY.MM.DD HH:MM
+    function formatSinhalaDate(date) {
+      const d = new Date(date);
+      const year = d.getFullYear();
+      const month = (d.getMonth() + 1).toString().padStart(2, '0');
+      const day = d.getDate().toString().padStart(2, '0');
+      const hours = d.getHours().toString().padStart(2, '0');
+      const minutes = d.getMinutes().toString().padStart(2, '0');
+      
+      return `${year}.${month}.${day} ${hours}:${minutes}`;
+    }
+    
+    // Update all auspicious time countdowns
+    function updateAuspiciousCountdowns() {
+      const now = new Date();
+      
+      auspiciousTimes.forEach(time => {
+        const targetDate = new Date(time.date);
+        const diff = targetDate - now;
+        const card = document.getElementById(`${time.id}-card`);
+        const dateElement = document.getElementById(`${time.id}-date`);
+        const countdownElement = document.getElementById(`${time.id}-countdown`);
+        const passedElement = document.getElementById(`${time.id}-passed`);
+        
+        // Format and display the date
+        dateElement.textContent = formatSinhalaDate(targetDate);
+        
+        if (diff <= 0) {
+          // Time has passed - show passed state
+          card.classList.add('passed');
+          dateElement.classList.add('passed');
+          countdownElement.style.display = 'none';
+          passedElement.style.display = 'block';
+        } else {
+          // Time hasn't passed yet - update countdown
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+          
+          document.getElementById(`${time.id}-days`).textContent = days.toString().padStart(2, '0');
+          document.getElementById(`${time.id}-hours`).textContent = hours.toString().padStart(2, '0');
+          document.getElementById(`${time.id}-minutes`).textContent = minutes.toString().padStart(2, '0');
+          document.getElementById(`${time.id}-seconds`).textContent = seconds.toString().padStart(2, '0');
+          
+          card.classList.remove('passed');
+          dateElement.classList.remove('passed');
+          countdownElement.style.display = 'flex';
+          passedElement.style.display = 'none';
+        }
+      });
+    }
+    
+    // Initialize and update countdowns every second
+    updateAuspiciousCountdowns();
+    setInterval(updateAuspiciousCountdowns, 1000);
+  </script>
+</body>
+</html>

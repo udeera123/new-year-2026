@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.postimg.cc/kGjMN4yM/c5648a1e3b519052a4e026c6065cb40d-1-2.jpg" type="image/png"> 
+    <title>2025 අවුරුදු සටහන් පොත</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFD700;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: radial-gradient(circle, #FFD700, #FFA500);
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #C00;
+            font-size: clamp(24px, 6vw, 36px);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            border: 2px solid #C00;
+        }
+      
+        .home{             
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: clamp(14px, 4vw, 18px);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: #C00;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            margin-bottom: 10px;
+            width: 150px;
+            max-width: 100%;
+        }
+        .home:hover {
+            background-color: #A00;
+            transform: scale(1.05);
+        }
+        .notebook-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border: 3px solid #C00;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .note-input {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        #newNote {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #C00;
+            border-radius: 8px 0 0 8px;
+            outline: none;
+        }
+        
+        .add-btn {
+            background-color: #C00;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            font-size: 18px;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .add-btn:hover {
+            background-color: #A00;
+        }
+        
+        .notes-container {
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .note {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #C00;
+        }
+        
+        .note-text {
+            word-break: break-word;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .note-edit-input {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: none;
+        }
+        
+        .note-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+        
+        .edit-btn, .delete-btn, .save-btn, .cancel-btn {
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .edit-btn {
+            background-color: #4CAF50;
+        }
+        
+        .delete-btn {
+            background-color: #ff3333;
+        }
+        
+        .save-btn {
+            background-color: #2196F3;
+            display: none;
+        }
+        
+        .cancel-btn {
+            background-color: #ff9800;
+            display: none;
+        }
+        
+        .edit-btn:hover, .delete-btn:hover, 
+        .save-btn:hover, .cancel-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        
+        .footer {
+                        width: 100%;
+            text-align: center;
+            color: #333;
+            font-size: clamp(12px, 3vw, 16px);
+            padding: 15px 0;
+            margin-top: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+        }
+        
+        .emoji-decoration {
+            font-size: 24px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            .notebook-container {
+                padding: 15px;
+            }
+            
+            #newNote {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .add-btn {
+                padding: 0 15px;
+            }
+            
+            .note-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .edit-btn, .delete-btn, .save-btn, .cancel-btn {
+                flex: 1;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<a href="index.html" >
+<button class="home">Home</button>
+</a>
+    <div class="header">2025 අවුරුදු සටහන් පොත<br><small>By Udeera Lochana</small></div>
+    
+    <div class="notebook-container">
+        <div class="note-input">
+            <input type="text" id="newNote" placeholder="ඔබේ සටහන ඇතුළත් කරන්න...">
+            <button class="add-btn" id="addNote">එකතු කරන්න</button>
+        </div>
+        
+        <div class="emoji-decoration">
+            🎉 ✍️ 🎊
+        </div>
+        
+        <div class="notes-container" id="notesContainer">
+            <!-- Notes will appear here -->
+        </div>
+    </div>
+
+    <div class="footer">made by © udeera lochana</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const notesContainer = document.getElementById('notesContainer');
+            const newNoteInput = document.getElementById('newNote');
+            const addNoteBtn = document.getElementById('addNote');
+            
+            // Load notes from localStorage
+            loadNotes();
+            
+            // Add note event
+            addNoteBtn.addEventListener('click', addNote);
+            newNoteInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addNote();
+                }
+            });
+            
+            function addNote() {
+                const noteText = newNoteInput.value.trim();
+                if (noteText) {
+                    createNoteElement(noteText);
+                    newNoteInput.value = '';
+                    saveNotes();
+                }
+            }
+            
+            function createNoteElement(text) {
+                const noteElement = document.createElement('div');
+                noteElement.className = 'note';
+                
+                const textElement = document.createElement('div');
+                textElement.className = 'note-text';
+                textElement.textContent = text;
+                
+                const editInput = document.createElement('input');
+                editInput.type = 'text';
+                editInput.className = 'note-edit-input';
+                editInput.value = text;
+                
+                const buttonsDiv = document.createElement('div');
+                buttonsDiv.className = 'note-buttons';
+                
+                const editBtn = document.createElement('button');
+                editBtn.className = 'edit-btn';
+                editBtn.textContent = 'සංස්කරණය';
+                editBtn.addEventListener('click', function() {
+                    textElement.style.display = 'none';
+                    editInput.style.display = 'block';
+                    editBtn.style.display = 'none';
+                    deleteBtn.style.display = 'none';
+                    saveBtn.style.display = 'inline-block';
+                    cancelBtn.style.display = 'inline-block';
+                    editInput.focus();
+                });
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.textContent = 'මකන්න';
+                deleteBtn.addEventListener('click', function() {
+                    if (confirm('ඔබට මෙම සටහන මැකීමට අවශ්‍යද?')) {
+                        notesContainer.removeChild(noteElement);
+                        saveNotes();
+                    }
+                });
+                
+                const saveBtn = document.createElement('button');
+                saveBtn.className = 'save-btn';
+                saveBtn.textContent = 'සුරකින්න';
+                saveBtn.addEventListener('click', function() {
+                    const newText = editInput.value.trim();
+                    if (newText) {
+                        textElement.textContent = newText;
+                        textElement.style.display = 'block';
+                        editInput.style.display = 'none';
+                        editBtn.style.display = 'inline-block';
+                        deleteBtn.style.display = 'inline-block';
+                        saveBtn.style.display = 'none';
+                        cancelBtn.style.display = 'none';
+                        saveNotes();
+                    }
+                });
+                
+                const cancelBtn = document.createElement('button');
+                cancelBtn.className = 'cancel-btn';
+                cancelBtn.textContent = 'අවලංගු';
+                cancelBtn.addEventListener('click', function() {
+                    textElement.style.display = 'block';
+                    editInput.style.display = 'none';
+                    editBtn.style.display = 'inline-block';
+                    deleteBtn.style.display = 'inline-block';
+                    saveBtn.style.display = 'none';
+                    cancelBtn.style.display = 'none';
+                    editInput.value = textElement.textContent;
+                });
+                
+                buttonsDiv.appendChild(editBtn);
+                buttonsDiv.appendChild(deleteBtn);
+                buttonsDiv.appendChild(saveBtn);
+                buttonsDiv.appendChild(cancelBtn);
+                
+                noteElement.appendChild(textElement);
+                noteElement.appendChild(editInput);
+                noteElement.appendChild(buttonsDiv);
+                
+                notesContainer.appendChild(noteElement);
+            }
+            
+            function saveNotes() {
+                const notes = [];
+                document.querySelectorAll('.note-text').forEach(note => {
+                    notes.push(note.textContent);
+                });
+                localStorage.setItem('newYearNotes', JSON.stringify(notes));
+            }
+            
+            function loadNotes() {
+                const savedNotes = localStorage.getItem('newYearNotes');
+                if (savedNotes) {
+                    const notes = JSON.parse(savedNotes);
+                    notes.forEach(noteText => {
+                        createNoteElement(noteText);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
