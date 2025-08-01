@@ -1,0 +1,563 @@
+<html lang="si">
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="https://i.postimg.cc/kGjMN4yM/c5648a1e3b519052a4e026c6065cb40d-1-2.jpg" type="image/png"> 
+  <title>2025 අවුරුදු උත්සවය</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+  <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 20px 0;
+            color: #C00;
+          font-weight:500;
+            font-size: clamp(28px, 6vw, 42px);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #C00;
+        }
+      
+       .countdown-container {
+            text-align: center;
+            margin: 10px 0 20px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #C00;
+        }
+      
+        .countdown-title {
+            font-size: clamp(18px, 4vw, 24px);
+            color: #C00;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+      
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+        }
+      
+        .countdown-number {
+            font-size: clamp(24px, 6vw, 36px);
+            font-weight: bold;
+            color: #C00;
+        }
+        
+        .countdown-label {
+            font-size: clamp(12px, 3vw, 14px);
+            color: #333;
+        }
+              
+        .festival-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 3px solid #C00;
+        }
+      
+         .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            gap: 15px;
+        }
+        
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            padding: 20px;
+        }
+        
+.game-button,.game-button2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+    color: #333;
+    border: none;
+    padding: 15px;
+    font-size: clamp(16px, 3.5vw, 20px); 
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    font-weight: bold;
+    text-decoration: none;
+    min-height: 110px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.3);
+    text-align: center;
+    gap: 12px; 
+    width: 100%; 
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+.game-button2{
+  margin-bottom:20px;
+}
+.game-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+    transition: transform 0.3s;
+}
+.game-title {
+    margin: 0; 
+    color: #C00;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+        .game-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .game-button2:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .game-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+        .game-button2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+        
+        .game-button:hover::before {
+            transform: translateX(100%);
+        }
+        .game-button2:hover::before {
+            transform: translateX(100%);
+        }
+        .game-button:hover .game-icon{
+            transform: scale(1.1);
+        }
+             .game-button2:hover .game-icon{
+            transform: scale(1.1);
+        }
+        
+       .footer {
+            width: 100%;
+            text-align: center;
+            color: #333;
+            font-size: clamp(12px, 3vw, 16px);
+            padding: 15px 0;
+            margin-top: auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+        }
+        
+        .decoration {
+            position: absolute;
+            font-size: 24px;
+            color: #C00;
+            z-index: -1;
+          animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Newsletter Styles */
+        .newsletter-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #C00;
+        }
+        
+        .newsletter-title {
+            color: #C00;
+            font-size: clamp(20px, 4vw, 24px);
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .form-label {
+            color: #333;
+            font-size: clamp(14px, 3vw, 16px);
+            font-weight: bold;
+            text-align:left;
+        }
+        
+        .form-input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #C00;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.2);
+            background-color: white;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, #C00, #FF4500);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            
+        }
+        
+        .success-message {
+            background-color: rgba(0, 128, 0, 0.1);
+            color: #008000;
+            border-left: 4px solid #008000;
+            display: flex;
+        }
+        
+        .error-message {
+            background-color: rgba(204, 0, 0, 0.1);
+            color: #C00;
+            border-left: 4px solid #C00;
+            display: flex;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                margin: 10px 0;
+                padding: 8px;
+            }
+            
+            .game-button {
+                padding: 12px 20px;
+                margin: 2px 0;
+            }
+              .countdown-container {
+                  
+                padding: 10px;
+
+            }
+            .game-icon {
+                width: 70px;
+                height: 70px;
+                margin-right: 10px;
+            }
+            
+            .newsletter-container {
+                padding: 15px;
+            }
+        }
+    </style> 
+ </head> 
+ <body> 
+  <div class="header">
+    2025 අවුරුදු උත්සවය 
+   <br> 
+   <small>By Udeera Lochana </small> 
+  </div> 
+  <div class="countdown-container"> 
+   <div class="countdown-title">
+     අලුත් අවුරුදු උදා වුනා 
+   </div> 
+   <div class="countdown" id="countdown"> 
+    <div class="countdown-item"> 
+     <div class="countdown-number" id="days">
+       00 
+     </div> 
+     <div class="countdown-label">
+       දින 
+     </div> 
+    </div> 
+    <div class="countdown-item"> 
+     <div class="countdown-number" id="hours">
+       00 
+     </div> 
+     <div class="countdown-label">
+       පැය 
+     </div> 
+    </div> 
+    <div class="countdown-item"> 
+     <div class="countdown-number" id="minutes">
+       00 
+     </div> 
+     <div class="countdown-label">
+       මිනිත්තු 
+     </div> 
+    </div> 
+    <div class="countdown-item"> 
+     <div class="countdown-number" id="seconds">
+       00 
+     </div> 
+     <div class="countdown-label">
+       තත්පර 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="main-content"> 
+   <img src="https://i.postimg.cc/wj0zLhtJ/c5648a1e3b519052a4e026c6065cb40d-1.jpg" alt="New Year Celebration" class="festival-image"> 
+   <a href="nakath.html" class="game-button"> <img src="https://i.postimg.cc/3xL4tMdm/Background-Eraser-20250413-215737005.png" alt="Playing Kids" class="game-icon"> <span>Digital නැකත් සීට්ටුව</span> </a> 
+   <a href="song.html" class="game-button"> <img src="https://i.postimg.cc/gJvmw13c/pngtree-musical-chair-png-image-11056866.png" alt="Musical Chair" class="game-icon"> <span>සංගීත පුටු තරගය</span> </a> 
+   <a href="game.html" class="game-button"> <img src="https://i.postimg.cc/Ss7ZpXDS/Background-Eraser-20250328-085254337.png" alt="Playing Kids" class="game-icon"> <span>අවුරුදු ක්‍රීඩා</span> </a> 
+   <a href="wishes.html" class="game-button"> <img src="https://i.postimg.cc/bvxZRS6K/Background-Eraser-20250411-203105170.png" alt="Musical Chair" class="game-icon"> <span>අවුරුදු සුභ පැතුම් පත්</span> </a> 
+   <a href="notes.html" class="game-button"> <img src="https://i.postimg.cc/VkftDmGC/pngtree-notebook-icon-png-image-6591697.png" alt="Note Book" class="game-icon"> <span>සටහන් පොත</span> </a> 
+   <a href="clock.html" class="game-button"> <img src="https://i.postimg.cc/SQ340bzX/31048.png" alt="Musical Chair" class="game-icon"> <span>නැවතීමේ ඔරලෝසුව</span> </a> 
+   <a href="litha.html" class="game-button"> <img src="https://i.postimg.cc/nL32ccLK/calendar-249.png" alt="Musical Chair" class="game-icon"> <span>අවුරුදු ලිත</span> </a> 
+   <a href="gellary.html" class="game-button2"> <img src="https://i.postimg.cc/wBYTmfTH/photo-xxl.png" alt="Musical Chair" class="game-icon"> <span>ඡායාරූප ගැලරිය</span> </a> 
+   <!-- Newsletter Section --> 
+   <div class="newsletter-container" id="comments"> 
+    <h3 class="newsletter-title">ඔබේ අදහස් අපට යොමු කරන්න</h3> 
+    <form id="newsletterForm" class="newsletter-form"> 
+     <div class="form-group"> 
+      <input type="text" id="name" class="form-input" placeholder="ඔබේ නම *" required> 
+     </div> 
+     <div class="form-group"> 
+      <input type="text" id="contact" class="form-input" placeholder="Email හෝ  දුරකථන අංකය *" required> 
+     </div> 
+     <div class="form-group"> 
+      <textarea id="messageContent" class="form-input" rows="4" placeholder="ඔබේ අදහස් *" required></textarea> 
+     </div> 
+     <button type="submit" class="submit-btn" id="submitBtn"> <span id="btnText">යොමු කරන්න</span> <i class="fas fa-paper-plane" id="submitIcon"></i> </button> 
+     <div id="successMessage" class="message success-message" style="display: none;"> 
+      <i class="fas fa-check-circle"></i> 
+      <span>ඔබේ අදහස් යොමු කිරීම සාර්ථකයි! ස්තූතියි!</span> 
+     </div> 
+     <div id="errorMessage" class="message error-message" style="display: none;"> 
+      <i class="fas fa-exclamation-circle"></i> 
+      <span>දෝෂයක් ඇතිවිය. කරුණාකර නැවත උත්සාහ කරන්න.</span> 
+     </div> 
+    </form> 
+   </div> 
+   <div class="footer">
+     Made by © Udeera Lochana 
+   </div> 
+   <!-- New Year decorations (randomly positioned) --> 
+   <div class="decoration" style="top: 10%; left: 5%;">
+     🎉 
+   </div> 
+   <div class="decoration" style="top: 15%; right: 8%;">
+     🪅 
+   </div> 
+   <div class="decoration" style="bottom: 25%; left: 10%;">
+     🎊 
+   </div> 
+   <div class="decoration" style="bottom: 30%; right: 5%;">
+     🥥 
+   </div> 
+   <script>
+        // Set the date we're counting down to (2025 April 14)
+        const newYearDate = new Date("April 14, 2025 03:21:00").getTime();
+        
+        // Update the countdown every 1 second
+        const countdown = setInterval(function() {
+            // Get today's date and time
+            const now = new Date().getTime();
+            
+            // Find the distance between now and the countdown date
+            const distance = newYearDate - now;
+            
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Display the result
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+            
+            // If the countdown is finished
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "<div style='color:#C00; font-weight:bold;'>ඔබ සැමට සාමය සතුට පිරි සුභ අලුත් අවුරුද්දක් වේවා!</div>";
+            }
+        }, 1000);
+        
+        // Newsletter Form Submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+         e.preventDefault();
+         
+         const name = document.getElementById('name').value;
+         const contact = document.getElementById('contact').value;
+         const message = document.getElementById('messageContent').value;
+         const submitBtn = document.getElementById('submitBtn');
+         const submitIcon = document.getElementById('submitIcon');
+         const btnText = document.getElementById('btnText');
+         const successMessage = document.getElementById('successMessage');
+         const errorMessage = document.getElementById('errorMessage');
+         
+         // Show loading state
+         submitBtn.disabled = true;
+         btnText.textContent = 'යොමු කරමින්...';
+         submitIcon.className = 'fas fa-spinner loading-spinner';
+         
+         // Hide previous messages
+         successMessage.style.display = 'none';
+         errorMessage.style.display = 'none';
+         
+         // Prepare data for Google Apps Script
+         const scriptURL = 'https://script.google.com/macros/s/AKfycbz0ZE7L76YzadYZGJH8tU4iEVICiRLLXoTLKXiLn2e0iJVxog_-eJtZ7DBeT5kjE58M2g/exec';
+         const formData = new FormData();
+         
+         // Get current date and time in Sri Lanka timezone
+         const now = new Date();
+         const options = { 
+           timeZone: 'Asia/Colombo',
+           year: 'numeric',
+           month: '2-digit',
+           day: '2-digit',
+           hour: '2-digit',
+           minute: '2-digit',
+           second: '2-digit',
+           hour12: false
+         };
+         
+         const dateTimeFormat = new Intl.DateTimeFormat('en-GB', options);
+         const parts = dateTimeFormat.formatToParts(now);
+         const timestamp = `${parts[4].value}-${parts[2].value}-${parts[0].value} ${parts[6].value}:${parts[8].value}:${parts[10].value}`;
+         
+         formData.append('timestamp', timestamp);
+         formData.append('name', name);
+         formData.append('contact', contact);
+         formData.append('message', message);
+         
+         fetch(scriptURL, { method: 'POST', body: formData })
+             .then(response => {
+                 if (response.ok) {
+                     successMessage.style.display = 'flex';
+                     document.getElementById('newsletterForm').reset();
+                 } else {
+                     throw new Error('Network response was not ok');
+                 }
+             })
+             .catch(error => {
+                 errorMessage.style.display = 'flex';
+                 console.error('Error!', error.message);
+             })
+             .finally(() => {
+                 // Reset button state
+                 submitBtn.disabled = false;
+                 btnText.textContent = 'යොමු කරන්න';
+                 submitIcon.className = 'fas fa-paper-plane';
+             });
+     });
+    </script>
+  </body>
+</html>
